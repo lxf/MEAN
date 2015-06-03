@@ -1,7 +1,7 @@
 var app = angular.module('movieapp', []);
 
 app.controller('MainCtrl', function ($scope, $http) {
-	$scope.test = 'hello wordl';
+	$scope.test = 'hello www.upsnail.com';
 
 	//新增
 	$scope.postMovie = function () {
