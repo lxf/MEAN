@@ -1,0 +1,55 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+		link(rel='icon', href='/images/favicon.ico')
+		title= app_name
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(src='http://apps.bdimg.com/libs/jquery/1.8.0/jquery.min.js')
+		script(src='http://apps.bdimg.com/libs/angular.js/1.4.0-beta.4/angular.min.js.map')
+		script(src='/js/main.js')
+	body(ng-app="movieapp" ng-controller='MainCtrl')
+		h1
+			#{title}
+		p
+			欢迎访问	#{title}
+		div.info_add
+			form(ng-submit='postMovie()')
+				.form-group
+					label.control-label.col-xs-2(for='form_name') 电影名:
+					div.col-xs-10
+						input#form_name.form-control(type='text', ng-model='name')
+				.form-group
+					label.control-label.col-xs-2(for='form_type') 类别
+					div.col-xs-10
+						input#form_type.form-control(type='text', ng-model='type')
+				.form-group
+					label.control-label.col-xs-2(for='form_date') 上映日期
+					div.col-xs-10
+						input#form_date.form-control(type='text', ng-model='date')
+				.form-group
+					button.col-xs-12.btn.btn-primary 新增
+		div.info_del
+			.form-group
+					label.control-label.col-xs-2(for='form_del_name') 要删除电影名的ID:
+					div.col-xs-10
+						input#form_del_name.form-control(type='text', name='name',ng-model='del_id')
+			.form-group
+					button.col-xs-12.btn.btn-primary#btn_del(ng-click='delMovie()') 删除
+		div.info_search
+			.form-group
+					label.control-label.col-xs-2(for='form_search_name') 要查询电影名的ID:
+					div.col-xs-10
+						input#form_search_name.form-control(type='text', name='name',ng-model='search_id')
+			.form-group
+					button.col-xs-12.btn.btn-primary#btn_search(ng-click='getMovie()') 查询	
+		div.info_update
+			.form-group
+					label.control-label.col-xs-2(for='form_update_name') 要更新电影名的ID:
+					div.col-xs-10
+						input#form_update_name.form-control(type='text', name='name',ng-model='update_id')
+			.form-group
+					button.col-xs-12.btn.btn-primary#btn_update(ng-click='updateMovie()') 更新(默认将上映日期更新到当前)
+	block content
